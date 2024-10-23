@@ -1,0 +1,30 @@
+.template-container {
+    max-width: 700px;
+    margin: auto;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .template-title {
+    font-size: 2em;
+    color: #333;
+    text-align: center;
+  }
+  
+  .template-list-item {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .template-button {
+    background-color: #e74c3c;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
