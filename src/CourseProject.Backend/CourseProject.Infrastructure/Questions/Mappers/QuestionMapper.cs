@@ -8,6 +8,6 @@ public class QuestionMapper : Profile
 {
     public QuestionMapper()
     {
-        CreateMap<Form, QuestionDto>().ReverseMap();
+        CreateMap<Question, QuestionDto>().ReverseMap();
     }
 }

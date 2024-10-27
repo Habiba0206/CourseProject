@@ -9,6 +9,6 @@ public class QuestionDto
     public string Title { get; set; }
     public string Description { get; set; }
     public QuestionType Type { get; set; }
-    public IEnumerable<string> Options { get; set; }
+    public IEnumerable<string>? Options { get; set; }
     public bool DisplayInResults { get; set; }
 }

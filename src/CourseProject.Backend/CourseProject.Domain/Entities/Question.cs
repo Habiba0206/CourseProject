@@ -9,7 +9,7 @@ public class Question : AuditableEntity
     public string Title { get; set; }
     public string Description { get; set; }
     public QuestionType Type { get; set; }
-    public IEnumerable<string> Options { get; set; }
+    public IEnumerable<string>? Options { get; set; }
     public bool DisplayInResults { get; set; }
     public Template Template { get; set; }
 }

@@ -12,10 +12,10 @@ public class QuestionConfiguration : IEntityTypeConfiguration<Question>
         builder.Property(q => q.Title)
             .IsRequired();
 
-       builder.Property(q => q.Options)
-            .HasConversion(
-                v => string.Join(',', v),
-                v => v.Split(',', StringSplitOptions.RemoveEmptyEntries))
+        builder.Property(q => q.Options)
+             .HasConversion(
+                 v => string.Join(',', v),
+                 v => v.Split(',', StringSplitOptions.RemoveEmptyEntries))
             .Metadata.SetValueComparer(new ValueComparer<IEnumerable<string>>(
                 (c1, c2) => c1.SequenceEqual(c2),  // Compare sequences
                 c => c.Aggregate(0, (a, v) => HashCode.Combine(a, v.GetHashCode())),  // Aggregate hash codes

@@ -7,7 +7,7 @@ using CourseProject.Domain.Entities;
 
 namespace CourseProject.Infrastructure.Questions.CommandHandlers;
 
-internal class QuestionCreateCommandHandler(
+public class QuestionCreateCommandHandler(
 IMapper mapper,
     IQuestionService questionService) : ICommandHandler<QuestionCreateCommand, QuestionDto>
 {
