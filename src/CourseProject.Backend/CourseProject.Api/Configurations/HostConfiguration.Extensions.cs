@@ -129,8 +129,12 @@ public static partial class HostConfiguration
             Environment.GetEnvironmentVariable(DataAccessConstants.DbConnectionString) :  
             builder.Configuration.GetConnectionString(DataAccessConstants.DbConnectionString);
         
-        Console.WriteLine("Received connection string : {0}", dbConnectionString);
-
+        var logger = builder.Services.BuildServiceProvider().GetService<ILogger<Program>>();
+    
+        logger?.LogInformation("Environment: {Environment}", builder.Environment.EnvironmentName);
+        logger?.LogInformation("Connection String Present: {HasConnection}", !string.IsNullOrEmpty(dbConnectionString));
+        logger?.LogDebug("Connection String: {ConnectionString}", dbConnectionString);
+        
         builder.Services.AddDbContext<AppDbContext>(options => 
         {
             options.UseNpgsql(dbConnectionString);
