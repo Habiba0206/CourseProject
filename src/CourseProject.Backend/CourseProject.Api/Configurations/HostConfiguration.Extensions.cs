@@ -126,7 +126,7 @@ public static partial class HostConfiguration
     private static WebApplicationBuilder AddPersistence(this WebApplicationBuilder builder)
     {
         var dbConnectionString = builder.Environment.IsProduction() ?
-            Environment.GetEnvironmentVariable(DataAccessConstants.DbConnectionString) : 
+            Environment.GetEnvironmentVariable("AZURE_POSTGRESQL_CONNECTIONSTRING") :  
             builder.Configuration.GetConnectionString(DataAccessConstants.DbConnectionString);
 
         builder.Services.AddDbContext<AppDbContext>(options => 
