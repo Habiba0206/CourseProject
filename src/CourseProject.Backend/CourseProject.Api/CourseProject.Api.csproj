@@ -33,4 +33,14 @@
 		</Content>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="wwwroot\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="wwwroot\EmailTemplates\EmailAddressVerificationNotification.html" />
+	  <None Include="wwwroot\EmailTemplates\ReferralNotification.html" />
+	  <None Include="wwwroot\EmailTemplates\WelcomeNotification.html" />
+	</ItemGroup>
+
 </Project>
