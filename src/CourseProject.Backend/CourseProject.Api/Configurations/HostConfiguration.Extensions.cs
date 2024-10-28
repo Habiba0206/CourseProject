@@ -125,8 +125,9 @@ public static partial class HostConfiguration
 
     private static WebApplicationBuilder AddPersistence(this WebApplicationBuilder builder)
     {
-        var dbConnectionString = builder.Environment.IsProduction() ?
-            Environment.GetEnvironmentVariable(DataAccessConstants.DbConnectionString) :  
+        var dbConnectionString = 
+            // builder.Environment.IsProduction() ?
+            // Environment.GetEnvironmentVariable(DataAccessConstants.DbConnectionString) :  
             builder.Configuration.GetConnectionString(DataAccessConstants.DbConnectionString);
         
         var logger = builder.Services.BuildServiceProvider().GetService<ILogger<Program>>();
