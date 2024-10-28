@@ -24,7 +24,7 @@ public static partial class HostConfiguration
         return new(builder);
     }
 
-    public static async ValueTask<WebApplication> ConfigureAsync(this WebApplication app)
+    public static ValueTask<WebApplication> ConfigureAsync(this WebApplication app)
     {
         // await app
         //     .MigratedataBaseSchemasAsync();
@@ -38,6 +38,6 @@ public static partial class HostConfiguration
             .UseDevTools()
             .UseExposers();
 
-        return app;
+        return new(app);
     }
 }
