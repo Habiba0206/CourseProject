@@ -38,9 +38,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Include="wwwroot\EmailTemplates\EmailAddressVerificationNotification.html" />
-	  <None Include="wwwroot\EmailTemplates\ReferralNotification.html" />
-	  <None Include="wwwroot\EmailTemplates\WelcomeNotification.html" />
+	  <None Include="wwwroot\EmailTemplates\EmailAddressVerificationNotification.html">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Include="wwwroot\EmailTemplates\ReferralNotification.html">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Include="wwwroot\EmailTemplates\WelcomeNotification.html">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
 	</ItemGroup>
 
 </Project>
