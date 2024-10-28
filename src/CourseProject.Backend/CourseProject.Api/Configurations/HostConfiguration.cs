@@ -26,10 +26,10 @@ public static partial class HostConfiguration
 
     public static async ValueTask<WebApplication> ConfigureAsync(this WebApplication app)
     {
-        await app
-            .MigratedataBaseSchemasAsync();
+        // await app
+        //     .MigratedataBaseSchemasAsync();
 
-        await app.SeedDataAsync();
+        // await app.SeedDataAsync();
 
         app
             .UseCors();

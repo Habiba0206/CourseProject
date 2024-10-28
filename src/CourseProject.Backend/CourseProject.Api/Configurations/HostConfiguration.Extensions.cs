@@ -125,13 +125,9 @@ public static partial class HostConfiguration
 
     private static WebApplicationBuilder AddPersistence(this WebApplicationBuilder builder)
     {
-        builder
-            .Services
-            .Configure<JwtSettings>(builder.Configuration.GetSection(nameof(JwtSettings)));
-
         var dbConnectionString = builder.Environment.IsProduction() ?
-Environment.GetEnvironmentVariable(DataAccessConstants.DbConnectionString) : 
-builder.Configuration.GetConnectionString(DataAccessConstants.DbConnectionString);
+            Environment.GetEnvironmentVariable(DataAccessConstants.DbConnectionString) : 
+            builder.Configuration.GetConnectionString(DataAccessConstants.DbConnectionString);
 
         builder.Services.AddDbContext<AppDbContext>(options => 
         {
