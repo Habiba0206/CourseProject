@@ -58,7 +58,7 @@ public static partial class HostConfiguration
         Assemblies.Add(Assembly.GetExecutingAssembly());
     }
 
-    private static WebApplicationBuilder AddSerializers(this WebApplicationBuilder builder) 
+    private static WebApplicationBuilder AddSerializers(this WebApplicationBuilder builder)
     {
         builder.Services.AddSingleton<IJsonSerializationSettingsProvider, JsonSerializationSettingsProvider>();
 
@@ -125,21 +125,17 @@ public static partial class HostConfiguration
 
     private static WebApplicationBuilder AddPersistence(this WebApplicationBuilder builder)
     {
-        var dbConnectionString = 
-            // builder.Environment.IsProduction() ?
-            // Environment.GetEnvironmentVariable(DataAccessConstants.DbConnectionString) :  
-            builder.Configuration.GetConnectionString(DataAccessConstants.DbConnectionString);
-        
+        var dbConnectionString =
+            builder.Configuration.GetConnectionString(DataAccessConstants.DbConnectionString) ??
+            Environment.GetEnvironmentVariable(DataAccessConstants.DbConnectionString);
+
         var logger = builder.Services.BuildServiceProvider().GetService<ILogger<Program>>();
-    
+
         logger?.LogInformation("Environment: {Environment}", builder.Environment.EnvironmentName);
         logger?.LogInformation("Connection String Present: {HasConnection}", !string.IsNullOrEmpty(dbConnectionString));
         logger?.LogDebug("Connection String: {ConnectionString}", dbConnectionString);
-        
-        builder.Services.AddDbContext<AppDbContext>(options => 
-        {
-            options.UseNpgsql(dbConnectionString);
-        });
+
+        builder.Services.AddDbContext<AppDbContext>(options => { options.UseNpgsql(dbConnectionString); });
 
         return builder;
     }
@@ -260,10 +256,7 @@ public static partial class HostConfiguration
     {
         builder
             .Services
-            .AddMediatR(conf => 
-            {
-                conf.RegisterServicesFromAssemblies(Assemblies.ToArray());
-            });
+            .AddMediatR(conf => { conf.RegisterServicesFromAssemblies(Assemblies.ToArray()); });
 
         return builder;
     }
@@ -280,15 +273,16 @@ public static partial class HostConfiguration
     private static WebApplicationBuilder AddCors(this WebApplicationBuilder builder)
     {
         builder.Services.AddCors(
-            options => {
+            options =>
+            {
                 options.AddDefaultPolicy(
-                policyBuilder =>
-                {
-                    policyBuilder
-                    .AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader();
-                }
+                    policyBuilder =>
+                    {
+                        policyBuilder
+                            .AllowAnyOrigin()
+                            .AllowAnyMethod()
+                            .AllowAnyHeader();
+                    }
                 );
             }
         );
@@ -307,10 +301,7 @@ public static partial class HostConfiguration
     private static WebApplicationBuilder AddExposers(this WebApplicationBuilder builder)
     {
         builder.Services.Configure<ApiBehaviorOptions>
-            (options =>
-{
-    options.SuppressModelStateInvalidFilter = true;
-});
+            (options => { options.SuppressModelStateInvalidFilter = true; });
 
         builder.Services.AddRouting(options => options.LowercaseUrls = true);
         builder.Services.AddControllers().AddNewtonsoftJson();
