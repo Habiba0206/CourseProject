@@ -315,6 +315,17 @@ builder.Configuration.GetConnectionString(DataAccessConstants.DbConnectionString
         return builder;
     }
 
+    private static WebApplicationBuilder AddHeroku(this WebApplicationBuilder builder)
+    {
+        builder.WebHost.ConfigureKestrel(serverOptions =>
+        {
+            var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
+            serverOptions.ListenAnyIP(int.Parse(port));
+        });
+
+        return builder;
+    }
+
     private static async ValueTask<WebApplication> MigratedataBaseSchemasAsync(this WebApplication app)
     {
         var serviceScopeFactory = app.Services.GetRequiredKeyedService<IServiceScopeFactory>(null);
@@ -346,4 +357,7 @@ builder.Configuration.GetConnectionString(DataAccessConstants.DbConnectionString
 
         return app;
     }
+
+    
+
 }

@@ -18,6 +18,7 @@ public static partial class HostConfiguration
             .AddMediatR()
             .AddReqeuestContextTools()
             .AddCors()
+            .AddHeroku()
             .AddDevTools()
             .AddExposers();
 
