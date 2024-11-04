@@ -7,6 +7,7 @@ import Template from '../../models/Template';
 function CreateTemplate() {
   const [templateTitle, setTemplateTitle] = useState('');
   const [templateDescription, setTemplateDescription] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
   const handleTemplateSubmit = async (e) => {
@@ -19,9 +20,12 @@ function CreateTemplate() {
         isPublic: newTemplate.isPublic,
       });
       console.log('Template created:', response.data);
+      setTemplateTitle('');
+      setTemplateDescription('');
       navigate('/templates');
     } catch (error) {
       console.error('Template creation failed:', error);
+      setErrorMessage('Template creation failed. Please try again.');
       if (error.response) {
         console.error('Error response:', error.response.data);
       } else if (error.request) {
@@ -35,6 +39,7 @@ function CreateTemplate() {
   return (
     <div className="template-container">
       <h2 className="template-title">Create a New Template</h2>
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
       <form onSubmit={handleTemplateSubmit}>
         <input
           type="text"

@@ -1,0 +1,61 @@
+.auth-container {
+  max-width: 350px; 
+  margin: 50px auto; 
+  padding: 30px; 
+  border-radius: 12px; 
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); 
+  background-color: #ffffff; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+}
+
+.auth-title {
+  font-size: 2em; 
+  margin-bottom: 25px; 
+  text-align: center; 
+  color: #444; 
+}
+
+.auth-input {
+  width: 93%; 
+  margin-bottom: 15px; 
+  border-radius: 5px; 
+  border: 1px solid #d1d5db; 
+  background-color: #f9f9f9; 
+  transition: border-color 0.3s; 
+}
+
+.auth-input:focus {
+  border-color: #60a5fa; 
+  outline: none; 
+}
+
+.auth-button {
+  width: 100%; 
+  padding: 12px; 
+  background-color: #60a5fa; 
+  color: white; 
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  transition: background-color 0.3s; 
+}
+
+.auth-button:hover {
+  background-color: #3b82f6; 
+}
+.auth-register-prompt {
+  font-size: 0.875rem; /* smaller font size */
+  color: #666; /* optional: slightly lighter color for subtlety */
+  margin-top: 10px;
+}
+
+.auth-register-prompt a {
+  color: #007DC5; /* link color to match your design */
+  text-decoration: none;
+}
+
+.auth-register-prompt a:hover {
+  text-decoration: underline;
+}

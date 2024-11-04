@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
-import axiosInstance from '../../api/axiosConfig';
-import './authStyles.css';
+import React, { useState } from "react";
+import axiosInstance from "../../api/axiosConfig";
+import "./authStyles.css";
 
 function SignIn() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axiosInstance.post('/api/auth/sign-in', {
+      const response = await axiosInstance.post("/api/auth/sign-in", {
         emailAddress: email,
         password: password,
       });
-      console.log('Signed in:', response.data);
+      console.log("Signed in:", response.data);
     } catch (error) {
-      console.error('Sign in failed:', error);
+      console.error("Sign in failed:", error);
     }
   };
 
@@ -37,8 +37,13 @@ function SignIn() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit" className="auth-button">Sign In</button>
+        <button type="submit" className="auth-button">
+          Sign In
+        </button>
       </form>
+      <p className="auth-register-prompt">
+        If you haven't registered, please <a href="/sign-up">sign up here</a>.
+      </p>
     </div>
   );
 }

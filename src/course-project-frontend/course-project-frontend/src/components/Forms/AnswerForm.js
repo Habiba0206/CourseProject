@@ -4,6 +4,7 @@ import './formStyles.css';
 
 function AnswerForm({ formId, questionId }) {
   const [answerValue, setAnswerValue] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleAnswerSubmit = async (e) => {
     e.preventDefault();
@@ -14,15 +15,17 @@ function AnswerForm({ formId, questionId }) {
         value: answerValue,
       });
       console.log('Answer submitted:', response.data);
-      setAnswerValue('');  // Clear input after submission
+      setAnswerValue('');
     } catch (error) {
       console.error('Answer submission failed:', error);
+      setErrorMessage('Answer submission failed. Please try again.');
     }
   };
 
   return (
     <div className="form-container">
       <h3 className="form-title">Submit Your Answer</h3>
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
       <form onSubmit={handleAnswerSubmit}>
         <input
           type="text"

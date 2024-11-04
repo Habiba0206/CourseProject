@@ -5,6 +5,7 @@ import './formStyles.css';
 function CreateForm() {
   const [formTitle, setFormTitle] = useState('');
   const [formDescription, setFormDescription] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -18,12 +19,14 @@ function CreateForm() {
       setFormDescription('');
     } catch (error) {
       console.error('Form creation failed:', error);
+      setErrorMessage('Form creation failed. Please try again.');
     }
   };
 
   return (
     <div className="form-container">
       <h2 className="form-title">Create a New Form</h2>
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
       <form onSubmit={handleFormSubmit}>
         <input
           type="text"
