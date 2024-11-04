@@ -30,7 +30,7 @@ public static partial class HostConfiguration
             .MigratedataBaseSchemasAsync();
 
         await app.SeedDataAsync();
-
+ 
         app
             .UseCors();
 

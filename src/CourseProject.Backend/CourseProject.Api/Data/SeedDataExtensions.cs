@@ -58,8 +58,7 @@ public static class SeedDataExtensions
                 async templateType =>
                 {
                     var filePath = Path.Combine(
-                        webHostEnvironment.ContentRootPath,
-                        "Data",
+                        webHostEnvironment.WebRootPath,
                         "EmailTemplates",
                         Path.ChangeExtension(templateType.ToString(), "html")
                     );
