@@ -12,5 +12,6 @@ public class User : AuditableEntity
     public int Age { get; set; }
     public bool IsEmailAddressVerified { get; set; }
     public Role Role { get; set; }
+    public UserState UserState { get; set; }
     public UserSettings? UserSettings { get; set; }
 }

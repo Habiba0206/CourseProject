@@ -340,4 +340,12 @@ public static partial class HostConfiguration
 
         return app;
     }
+
+    private static WebApplication UseIdentityInfrustructure(this WebApplication app)
+    {
+        app.UseAuthentication();
+        app.UseAuthorization();
+
+        return app;
+    }
 }

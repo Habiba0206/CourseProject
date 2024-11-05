@@ -36,7 +36,8 @@ public static partial class HostConfiguration
 
         app
             .UseDevTools()
-            .UseExposers();
+            .UseExposers()
+            .UseIdentityInfrustructure();
 
         return app;
     }
