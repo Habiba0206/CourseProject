@@ -279,9 +279,10 @@ public static partial class HostConfiguration
                     policyBuilder =>
                     {
                         policyBuilder
-                            .AllowAnyOrigin()
+                            .WithOrigins("http://localhost:3000")
                             .AllowAnyMethod()
-                            .AllowAnyHeader();
+                            .AllowAnyHeader()
+                            .AllowCredentials();
                     }
                 );
             }
